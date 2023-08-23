@@ -1,6 +1,16 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
-const Todo = ({ toDo }) => {
+const TodoList = ({ todos }) => {
+    return (
+        <ul>
+            {todos.map((todo, index) => (
+                <Todo key={index} toDo={todo} />
+            ))}
+        </ul>
+    );
+};
+
+function Todo({ toDo }) {
     const { todo } = toDo;
 
     return (
@@ -12,6 +22,6 @@ const Todo = ({ toDo }) => {
             <button className="flex-none">{<CrossIcon />}</button>
         </article>
     );
-};
+}
 
-export default Todo;
+export default TodoList;
