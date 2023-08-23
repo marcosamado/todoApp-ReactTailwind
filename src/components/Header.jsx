@@ -1,16 +1,13 @@
-import React, { useState } from 'react'
-import MoonIcon from './icons/MoonIcon';
-import CrossIcon from './icons/CrossIcon';
-import SunIcon from './icons/SunIcon';
+import React, { useState } from "react";
+import MoonIcon from "./icons/MoonIcon";
+import SunIcon from "./icons/SunIcon";
 
 export const Header = () => {
-
     const [darkTheme, setDarkTheme] = useState(false);
 
-
     const handleClick = () => {
-        setDarkTheme(!darkTheme)
-    }
+        setDarkTheme(!darkTheme);
+    };
 
     return (
         <header className="container mx-auto px-6 pt-8">
@@ -19,13 +16,15 @@ export const Header = () => {
                     Todo
                 </h1>
                 <button className="" onClick={handleClick}>
-                    {
-                        darkTheme ? <MoonIcon color="skyblue"/> : <SunIcon color="yellow"/>
-                    }
+                    {darkTheme ? (
+                        <MoonIcon color="skyblue" />
+                    ) : (
+                        <SunIcon color="yellow" />
+                    )}
                 </button>
             </div>
         </header>
-    )
-}
+    );
+};
 
 export default Header;

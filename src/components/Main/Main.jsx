@@ -1,50 +1,40 @@
-import React from 'react';
-import CrossIcon from '../icons/CrossIcon';
-import Form from './Form';
-import Todo from './Todo';
+import React, { useState } from "react";
+import Form from "./Form";
+import Todo from "./Todo";
+import ComputedTodo from "./ComputedTodo";
+import FilterTodo from "./FilterTodo";
 
 const Main = () => {
+    const [todos, setTodos] = useState([]);
+    const [error, setError] = useState(false);
 
-
-
+    const agregarTodo = (todo) => {
+        setTodos([...todos, todo]);
+    };
 
     return (
         <main className="container mx-auto px-6">
             {/* Todo CreateTodo  - Formulario que crea la todo*/}
-            <Form />
-
+            <Form agregarTodo={agregarTodo} error={error} setError={setError} />
             {/* Todo Item - Sector donde se apilan las todos - (va a contener Update todo y Delete todo) */}
-            <Todo />
-            <Todo />
-            <Todo />
-            <Todo />
-            
-            
-            
+            {todos.length === 0 && !error ? (
+                <h2 className="mb-10 mt-10 text-center text-3xl font-semibold uppercase tracking-[0.4em] text-white">
+                    No hay todos
+                </h2>
+            ) : (
+                <div>
+                    {todos.map((todo, index) => (
+                        <Todo key={index} toDo={todo} />
+                    ))}
+                </div>
+            )}
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
-            <section className="flex justify-between gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5 shadow-lg">
-                <span className="pt-0.5 text-xs font-bold text-gray-300">
-                    5 items left
-                </span>
-                <button className="pt-0.5 text-xs font-bold text-gray-300">
-                    Clear Completed
-                </button>
-            </section>
 
+            {todos.length !== 0 && <ComputedTodo />}
             {/* Todo Filter - Muestra todas las todos, las activas y las completadas */}
-            <section className="mt-5 flex justify-center gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5">
-                <button className="pt-0.5 text-xs font-bold text-blue-400">
-                    All
-                </button>
-                <button className="pt-0.5 text-xs font-bold text-gray-400 hover:text-blue-600">
-                    Active
-                </button>
-                <button className="pt-0.5 text-xs font-bold text-gray-400 hover:text-blue-600">
-                    Completed
-                </button>
-            </section>
+            {todos.length !== 0 && <FilterTodo />}
         </main>
-    )
-}
+    );
+};
 
-export default Main
+export default Main;
