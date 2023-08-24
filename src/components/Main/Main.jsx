@@ -5,7 +5,17 @@ import ComputedTodo from "./ComputedTodo";
 import FilterTodo from "./FilterTodo";
 
 const Main = () => {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState([
+        {
+            todo: "Tarea numero#01",
+        },
+        {
+            todo: "Tarea numero#02",
+        },
+        {
+            todo: "Tarea numero#03",
+        },
+    ]);
     const [error, setError] = useState(false);
 
     const agregarTodo = (todo) => {
@@ -17,18 +27,8 @@ const Main = () => {
             {/* Todo CreateTodo  - Formulario que crea la todo*/}
             <Form agregarTodo={agregarTodo} error={error} setError={setError} />
             {/* Todo Item - Sector donde se apilan las todos - (va a contener Update todo y Delete todo) */}
-            {/* {todos.length === 0 && !error ? (
-                <h2 className="mb-10 mt-5 text-center text-2xl font-semibold uppercase tracking-[0.4em] text-white">
-                    No hay todos
-                </h2>
-            ) : (
-                <div>
-                    {todos.map((todo, index) => (
-                        <TodoList key={index} toDo={todo} />
-                    ))}
-                </div>
-            )} */}
-            <TodoList todos={todos}/>
+
+            <TodoList todos={todos} error={error} />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
             {todos.length !== 0 && <ComputedTodo />}

@@ -1,11 +1,15 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, error }) => {
     return (
         <ul>
-            {todos.map((todo, index) => (
-                <Todo key={index} toDo={todo} />
-            ))}
+            {todos.length === 0 && !error ? (
+                <h2 className=" mb-10 mt-5 text-center text-2xl font-semibold uppercase tracking-[0.4em] text-white">
+                    No hay todos
+                </h2>
+            ) : (
+                todos.map((todo, index) => <Todo key={index} toDo={todo} />)
+            )}
         </ul>
     );
 };

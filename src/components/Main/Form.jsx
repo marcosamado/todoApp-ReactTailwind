@@ -9,6 +9,7 @@ const Form = ({ agregarTodo, error, setError }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+        name.length >= 3 && setError(false);
         setDataForm({ ...dataForm, [name]: value });
     };
 
@@ -42,7 +43,7 @@ const Form = ({ agregarTodo, error, setError }) => {
                 />
             </form>
             {error && (
-                <p className="ml-auto mr-auto mt-7 w-max rounded bg-slate-100 p-2  text-center text-sm font-semibold uppercase text-red-500">
+                <p className="mb-4 ml-auto mr-auto mt-5 w-max rounded bg-gradient-to-r from-rose-400 to-red-800 p-2 text-center text-sm font-semibold uppercase text-white">
                     Los datos ingresados no son validos
                 </p>
             )}
