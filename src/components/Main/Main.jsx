@@ -5,21 +5,21 @@ import ComputedTodo from "./ComputedTodo";
 import FilterTodo from "./FilterTodo";
 
 const Main = () => {
-    const [todos, setTodos] = useState([
-        {
-            todo: "Tarea numero#01",
-        },
-        {
-            todo: "Tarea numero#02",
-        },
-        {
-            todo: "Tarea numero#03",
-        },
-    ]);
+    const [todos, setTodos] = useState([]);
     const [error, setError] = useState(false);
 
     const agregarTodo = (todo) => {
         setTodos([...todos, todo]);
+    };
+
+    const actualizarEstado = (id) => {
+        const newArray = todos.map((tarea) => {
+            if (id === tarea.id) {
+                tarea.completed = !tarea.completed;
+            }
+            return tarea;
+        });
+        setTodos(newArray);
     };
 
     return (
@@ -28,7 +28,11 @@ const Main = () => {
             <Form agregarTodo={agregarTodo} error={error} setError={setError} />
             {/* Todo Item - Sector donde se apilan las todos - (va a contener Update todo y Delete todo) */}
 
-            <TodoList todos={todos} error={error} />
+            <TodoList
+                todos={todos}
+                error={error}
+                actualizarEstado={actualizarEstado}
+            />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
             {todos.length !== 0 && <ComputedTodo />}

@@ -2,24 +2,26 @@ import React, { useState } from "react";
 
 const Form = ({ agregarTodo, error, setError }) => {
     const [dataForm, setDataForm] = useState({
-        todo: "",
+        name: "",
+        completed: false,
     });
 
-    const { todo } = dataForm;
+    const { name } = dataForm;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         name.length >= 3 && setError(false);
-        setDataForm({ ...dataForm, [name]: value });
+        setDataForm({ id: Date.now(), ...dataForm, [name]: value });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (todo.trim() && todo.length >= 3) {
+        if (name.trim() && name.length >= 3) {
             agregarTodo(dataForm);
             setError(false);
             setDataForm({
-                todo: "",
+                name: "",
+                completed: false,
             });
         } else {
             setError(true);
@@ -37,8 +39,8 @@ const Form = ({ agregarTodo, error, setError }) => {
                     className="w-full text-gray-500 outline-none"
                     type="text"
                     placeholder="Create a new todo..."
-                    name="todo"
-                    value={todo}
+                    name="name"
+                    value={name}
                     onChange={handleChange}
                 />
             </form>

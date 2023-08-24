@@ -1,6 +1,7 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
-const TodoList = ({ todos, error }) => {
+import CheckIcon from "../icons/CheckIcon";
+const TodoList = ({ todos, error, actualizarEstado }) => {
     return (
         <ul>
             {todos.length === 0 && !error ? (
@@ -8,20 +9,37 @@ const TodoList = ({ todos, error }) => {
                     No hay todos
                 </h2>
             ) : (
-                todos.map((todo, index) => <Todo key={index} toDo={todo} />)
+                todos.map((todo, index) => (
+                    <Todo
+                        key={index}
+                        todo={todo}
+                        actualizarEstado={actualizarEstado}
+                    />
+                ))
             )}
         </ul>
     );
 };
 
-function Todo({ toDo }) {
-    const { todo } = toDo;
+function Todo({ todo, actualizarEstado }) {
+    const { name, id, completed } = todo;
+
+    const handleClick = () => {
+        actualizarEstado(id);
+    };
+
+    const completedStyle = "";
 
     return (
         <article className="flex gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5">
-            <button className="h-5 w-5 flex-none rounded-full border-2 border-slate-200"></button>
+            <button
+                onClick={handleClick}
+                className="h-5 w-5 flex-none rounded-full border-2 border-slate-200 px-0.5"
+            >
+                <CheckIcon />
+            </button>
             <p className="grow pt-0.5 text-xs font-bold text-gray-600">
-                {todo}
+                {name}
             </p>
             <button className="flex-none">{<CrossIcon />}</button>
         </article>
