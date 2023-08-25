@@ -31,12 +31,13 @@ const Form = ({ agregarTodo, error, setError }) => {
     return (
         <>
             <form
-                className="mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md  bg-white px-5 py-3.5"
+                className="mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md  bg-white px-5 py-3.5 dark:border-button-gray dark:bg-gray-todo"
                 onSubmit={handleSubmit}
             >
-                <span className=" inline-block h-5 w-5 rounded-full border-2 border-slate-200"></span>
+                <span className=" inline-block h-5 w-5 rounded-full border-2 border-slate-200 dark:border-button-gray "></span>
                 <input
-                    className="w-full text-gray-500 outline-none"
+                    maxLength="30"
+                    className="w-full text-gray-500 outline-none dark:bg-gray-todo dark:text-white"
                     type="text"
                     placeholder="Create a new todo..."
                     name="name"

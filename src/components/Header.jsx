@@ -6,6 +6,7 @@ export const Header = () => {
     const [darkTheme, setDarkTheme] = useState(false);
 
     const handleClick = () => {
+        document.documentElement.classList.toggle("dark");
         setDarkTheme(!darkTheme);
     };
 
@@ -17,9 +18,9 @@ export const Header = () => {
                 </h1>
                 <button className="" onClick={handleClick}>
                     {darkTheme ? (
-                        <MoonIcon color="skyblue" />
-                    ) : (
                         <SunIcon color="yellow" />
+                    ) : (
+                        <MoonIcon color="skyblue" />
                     )}
                 </button>
             </div>

@@ -2,7 +2,7 @@ import React from "react";
 
 const FilterTodo = () => {
     return (
-        <section className="mt-5 flex justify-center gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5">
+        <section className="mt-5 flex justify-center gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5 dark:border-button-gray dark:bg-gray-todo">
             <button className="pt-0.5 text-xs font-bold text-blue-400">
                 All
             </button>

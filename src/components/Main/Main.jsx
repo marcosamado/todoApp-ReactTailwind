@@ -35,7 +35,13 @@ const Main = () => {
             />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
-            {todos.length !== 0 && <ComputedTodo />}
+            {todos.length !== 0 && (
+                <ComputedTodo
+                    todos={todos}
+                    actualizarEstado={actualizarEstado}
+                    setTodos={setTodos}
+                />
+            )}
             {/* Todo Filter - Muestra todas las todos, las activas y las completadas */}
             {todos.length !== 0 && <FilterTodo />}
         </main>
