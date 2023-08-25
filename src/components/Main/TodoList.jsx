@@ -28,19 +28,22 @@ function Todo({ todo, actualizarEstado }) {
         actualizarEstado(id);
     };
 
-    const completedStyle = "";
+    const completedStyle =
+        "h-5 w-5 flex-none rounded-full bg-gradient-to-br from-cyan-300 to-fuchsia-500 px-1";
+    const incompleteStyle =
+        "h-5 w-5 flex-none rounded-full border-2 border-slate-200 border-2 border-slate-200";
+    const crossOutText = "grow pt-0.5 text-xs text-gray-400 line-through";
+    const text = "grow pt-0.5 text-xs font-bold text-gray-600";
 
     return (
         <article className="flex gap-2 rounded-md border-2 border-slate-200 bg-white px-4 py-3.5">
             <button
                 onClick={handleClick}
-                className="h-5 w-5 flex-none rounded-full border-2 border-slate-200 px-0.5"
+                className={`${completed ? completedStyle : incompleteStyle}`}
             >
                 <CheckIcon />
             </button>
-            <p className="grow pt-0.5 text-xs font-bold text-gray-600">
-                {name}
-            </p>
+            <p className={`${completed ? crossOutText : text}`}>{name}</p>
             <button className="flex-none">{<CrossIcon />}</button>
         </article>
     );
