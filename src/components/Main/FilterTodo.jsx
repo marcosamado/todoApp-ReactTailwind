@@ -1,16 +1,26 @@
 import React from "react";
 
-const FilterTodo = ({ filterAll, filterCompleted, filterActive }) => {
+const FilterTodo = ({
+    setShowActiveTodo,
+    setShowCompletedTodo,
+    setShowAllTodo,
+}) => {
     const handleClickAll = () => {
-        filterAll();
+        setShowAllTodo(true);
+        setShowActiveTodo(false);
+        setShowCompletedTodo(false);
     };
 
     const handleClickCompleted = () => {
-        filterCompleted();
+        setShowAllTodo(false);
+        setShowActiveTodo(false);
+        setShowCompletedTodo(true);
     };
 
     const handleClickActive = () => {
-        filterActive();
+        setShowAllTodo(false);
+        setShowActiveTodo(true);
+        setShowCompletedTodo(false);
     };
 
     return (

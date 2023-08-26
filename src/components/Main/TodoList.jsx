@@ -1,7 +1,25 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
-const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
+const TodoList = ({
+    todos,
+    error,
+    actualizarEstado,
+    eliminarTodo,
+    activeTodo,
+    completedTodo,
+    showCompletedTodo,
+    showActiveTodo,
+    showAllTodo,
+}) => {
+    let todosToRender = todos;
+
+    if (showActiveTodo) {
+        todosToRender = activeTodo;
+    } else if (showCompletedTodo) {
+        todosToRender = completedTodo;
+    }
+
     return (
         <ul>
             {todos.length === 0 && !error ? (
@@ -9,7 +27,7 @@ const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
                     No hay todos
                 </h2>
             ) : (
-                todos.map((todo, index) => (
+                todosToRender.map((todo, index) => (
                     <Todo
                         key={index}
                         todo={todo}

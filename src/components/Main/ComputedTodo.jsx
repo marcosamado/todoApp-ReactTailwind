@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ComputedTodo = ({ todos, actualizarEstado, clearComplete }) => {
+const ComputedTodo = ({ clearComplete, actualizarEstado, todos }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
