@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import ComputedTodo from "./ComputedTodo";
@@ -6,11 +6,16 @@ import FilterTodo from "./FilterTodo";
 
 const Main = () => {
     const [todos, setTodos] = useState([]);
+    // const [todosBase, setTodosBase] = useState([]);
     const [error, setError] = useState(false);
 
     const agregarTodo = (todo) => {
         setTodos([...todos, todo]);
     };
+
+    // useEffect(() => {
+    //     setTodosBase([...todos]);
+    // }, [todos]);
 
     const actualizarEstado = (id) => {
         const newArray = todos.map((tarea) => {
@@ -44,7 +49,7 @@ const Main = () => {
 
     const filterAll = () => {
         const newArray = todos.filter((todo) => todo);
-        setTodos(newArray);
+        setTodos([...todos]);
     };
 
     return (
