@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ComputedTodo = ({ todos, actualizarEstado, setTodos }) => {
+const ComputedTodo = ({ todos, actualizarEstado, clearComplete }) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
@@ -13,7 +13,10 @@ const ComputedTodo = ({ todos, actualizarEstado, setTodos }) => {
             <span className="pt-0.5 text-xs font-bold text-gray-300">
                 {count} items left
             </span>
-            <button className="pt-0.5 text-xs font-bold text-gray-300">
+            <button
+                onClick={clearComplete}
+                className="pt-0.5 text-xs font-bold text-gray-300"
+            >
                 Clear Completed
             </button>
         </section>

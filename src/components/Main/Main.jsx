@@ -22,6 +22,31 @@ const Main = () => {
         setTodos(newArray);
     };
 
+    const eliminarTodo = (id) => {
+        const newArray = todos.filter((todo) => todo.id !== id);
+        setTodos(newArray);
+    };
+
+    const clearComplete = () => {
+        const newArray = todos.filter((todo) => !todo.completed);
+        setTodos(newArray);
+    };
+
+    const filterActive = () => {
+        const newArray = todos.filter((todo) => !todo.completed);
+        setTodos(newArray);
+    };
+
+    const filterCompleted = () => {
+        const newArray = todos.filter((todo) => todo.completed);
+        setTodos(newArray);
+    };
+
+    const filterAll = () => {
+        const newArray = todos.filter((todo) => todo);
+        setTodos(newArray);
+    };
+
     return (
         <main className="container mx-auto px-6">
             {/* Todo CreateTodo  - Formulario que crea la todo*/}
@@ -32,6 +57,7 @@ const Main = () => {
                 todos={todos}
                 error={error}
                 actualizarEstado={actualizarEstado}
+                eliminarTodo={eliminarTodo}
             />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
@@ -39,11 +65,17 @@ const Main = () => {
                 <ComputedTodo
                     todos={todos}
                     actualizarEstado={actualizarEstado}
-                    setTodos={setTodos}
+                    clearComplete={clearComplete}
                 />
             )}
             {/* Todo Filter - Muestra todas las todos, las activas y las completadas */}
-            {todos.length !== 0 && <FilterTodo />}
+            {todos.length !== 0 && (
+                <FilterTodo
+                    filterActive={filterActive}
+                    filterCompleted={filterCompleted}
+                    filterAll={filterAll}
+                />
+            )}
         </main>
     );
 };

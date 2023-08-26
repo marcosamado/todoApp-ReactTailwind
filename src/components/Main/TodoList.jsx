@@ -1,7 +1,7 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
-const TodoList = ({ todos, error, actualizarEstado }) => {
+const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
     return (
         <ul>
             {todos.length === 0 && !error ? (
@@ -14,6 +14,7 @@ const TodoList = ({ todos, error, actualizarEstado }) => {
                         key={index}
                         todo={todo}
                         actualizarEstado={actualizarEstado}
+                        eliminarTodo={eliminarTodo}
                     />
                 ))
             )}
@@ -21,11 +22,15 @@ const TodoList = ({ todos, error, actualizarEstado }) => {
     );
 };
 
-function Todo({ todo, actualizarEstado }) {
+function Todo({ todo, actualizarEstado, eliminarTodo }) {
     const { name, id, completed } = todo;
 
     const handleClick = () => {
         actualizarEstado(id);
+    };
+
+    const handleClickDelete = () => {
+        eliminarTodo(id);
     };
 
     const completedStyle =
@@ -44,7 +49,9 @@ function Todo({ todo, actualizarEstado }) {
                 {completed && <CheckIcon />}
             </button>
             <p className={`${completed ? crossOutText : text}`}>{name}</p>
-            <button className="flex-none">{<CrossIcon />}</button>
+            <button onClick={handleClickDelete} className="flex-none">
+                {<CrossIcon />}
+            </button>
         </article>
     );
 }
