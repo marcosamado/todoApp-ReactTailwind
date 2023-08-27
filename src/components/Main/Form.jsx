@@ -28,16 +28,19 @@ const Form = ({ agregarTodo, error, setError }) => {
         }
     };
 
+    const formDarkTheme =
+        "mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md bg-white px-5 py-3.5 dark:border-button-gray dark:bg-gray-todo";
+    const inputDarkTheme =
+        "w-full text-gray-500 outline-none dark:bg-gray-todo dark:text-white";
+    const spanDarkTheme =
+        "inline-block h-5 w-5 rounded-full border-2 border-slate-200 dark:border-button-gray";
     return (
         <>
-            <form
-                className="mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md  bg-white px-5 py-3.5 dark:border-button-gray dark:bg-gray-todo"
-                onSubmit={handleSubmit}
-            >
-                <span className=" inline-block h-5 w-5 rounded-full border-2 border-slate-200 dark:border-button-gray "></span>
+            <form className={formDarkTheme} onSubmit={handleSubmit}>
+                <span className={spanDarkTheme}></span>
                 <input
                     maxLength="30"
-                    className="w-full text-gray-500 outline-none dark:bg-gray-todo dark:text-white"
+                    className={inputDarkTheme}
                     type="text"
                     placeholder="Create a new todo..."
                     name="name"

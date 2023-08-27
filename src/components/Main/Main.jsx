@@ -6,8 +6,8 @@ import FilterTodo from "./FilterTodo";
 
 const Main = () => {
     const [todos, setTodos] = useState([]);
-    const [completedTodo, setCompletedTodo] = useState([]);
-    const [activeTodo, setActiveTodo] = useState([]);
+    // const [completedTodo, setCompletedTodo] = useState([]);
+    // const [activeTodo, setActiveTodo] = useState([]);
     const [error, setError] = useState(false);
 
     const [showCompletedTodo, setShowCompletedTodo] = useState(false);
@@ -28,21 +28,21 @@ const Main = () => {
         setTodos(newArray);
     };
 
-    useEffect(() => {
-        const newCompletedTodo = [];
-        const newActiveTodo = [];
+    // useEffect(() => {
+    //     const newCompletedTodo = [];
+    //     const newActiveTodo = [];
 
-        todos.forEach((todo) => {
-            if (todo.completed) {
-                newCompletedTodo.push(todo);
-            } else {
-                newActiveTodo.push(todo);
-            }
-        });
+    //     todos.forEach((todo) => {
+    //         if (todo.completed) {
+    //             newCompletedTodo.push(todo);
+    //         } else {
+    //             newActiveTodo.push(todo);
+    //         }
+    //     });
 
-        setCompletedTodo(newCompletedTodo);
-        setActiveTodo(newActiveTodo);
-    }, [todos]);
+    //     setCompletedTodo(newCompletedTodo);
+    //     setActiveTodo(newActiveTodo);
+    // }, [todos]);
 
     const eliminarTodo = (id) => {
         const newArray = todos.filter((todo) => todo.id !== id);
@@ -54,20 +54,11 @@ const Main = () => {
         setTodos(newArray);
     };
 
-    // const filterActive = () => {
-    //     const newArray = todos.filter((todo) => !todo.completed);
-    //     setTodos(newArray);
-    // };
-
-    // const filterCompleted = () => {
-    //     const newArray = todos.filter((todo) => todo.completed);
-    //     setCompletedTodo(newArray);
-    // };
-
-    // const filterAll = () => {
-    //     const newArray = todos.filter((todo) => todo);
-    //     setTodos([...todos]);
-    // };
+    const getTodos = () => {
+        if (showCompletedTodo) return todos.filter((todo) => todo.completed);
+        if (showActiveTodo) return todos.filter((todo) => !todo.completed);
+        return todos;
+    };
 
     return (
         <main className="container mx-auto max-w-2xl px-6">
@@ -76,15 +67,15 @@ const Main = () => {
             {/* Todo Item - Sector donde se apilan las todos - (va a contener Update todo y Delete todo) */}
 
             <TodoList
-                todos={todos}
+                todos={getTodos()}
                 error={error}
                 actualizarEstado={actualizarEstado}
                 eliminarTodo={eliminarTodo}
-                activeTodo={activeTodo}
-                completedTodo={completedTodo}
-                showCompletedTodo={showCompletedTodo}
-                showActiveTodo={showActiveTodo}
-                showAllTodo={showAllTodo}
+                // activeTodo={activeTodo}
+                // completedTodo={completedTodo}
+                // showCompletedTodo={showCompletedTodo}
+                // showActiveTodo={showActiveTodo}
+                // showAllTodo={showAllTodo}
             />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 

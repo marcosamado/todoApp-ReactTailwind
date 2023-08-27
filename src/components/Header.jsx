@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import MoonIcon from "./icons/MoonIcon";
 import SunIcon from "./icons/SunIcon";
 
-export const Header = () => {
-    const [darkTheme, setDarkTheme] = useState(false);
-
+export const Header = ({ setDarkTheme, darkTheme }) => {
     const handleClick = () => {
         document.documentElement.classList.toggle("dark");
         setDarkTheme(!darkTheme);

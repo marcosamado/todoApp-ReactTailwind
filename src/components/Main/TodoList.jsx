@@ -1,24 +1,14 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
-const TodoList = ({
-    todos,
-    error,
-    actualizarEstado,
-    eliminarTodo,
-    activeTodo,
-    completedTodo,
-    showCompletedTodo,
-    showActiveTodo,
-    showAllTodo,
-}) => {
-    let todosToRender = todos;
+const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
+    // let todosToRender = todos;
 
-    if (showActiveTodo) {
-        todosToRender = activeTodo;
-    } else if (showCompletedTodo) {
-        todosToRender = completedTodo;
-    }
+    // if (showActiveTodo) {
+    //     todosToRender = activeTodo;
+    // } else if (showCompletedTodo) {
+    //     todosToRender = completedTodo;
+    // }
 
     return (
         <ul>
@@ -27,7 +17,7 @@ const TodoList = ({
                     No hay todos
                 </h2>
             ) : (
-                todosToRender.map((todo, index) => (
+                todos.map((todo, index) => (
                     <Todo
                         key={index}
                         todo={todo}
@@ -62,11 +52,11 @@ function Todo({ todo, actualizarEstado, eliminarTodo }) {
         <article className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5 dark:border-button-gray dark:bg-gray-todo">
             <button
                 onClick={handleClick}
-                className={`${completed ? completedStyle : incompleteStyle}`}
+                className={completed ? completedStyle : incompleteStyle}
             >
                 {completed && <CheckIcon />}
             </button>
-            <p className={`${completed ? crossOutText : text}`}>{name}</p>
+            <p className={completed ? crossOutText : text}>{name}</p>
             <button onClick={handleClickDelete} className="flex-none">
                 {<CrossIcon />}
             </button>
