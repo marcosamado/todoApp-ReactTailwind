@@ -6,8 +6,6 @@ import FilterTodo from "./FilterTodo";
 
 const Main = () => {
     const [todos, setTodos] = useState([]);
-    // const [completedTodo, setCompletedTodo] = useState([]);
-    // const [activeTodo, setActiveTodo] = useState([]);
     const [error, setError] = useState(false);
 
     const [showCompletedTodo, setShowCompletedTodo] = useState(false);
@@ -27,22 +25,6 @@ const Main = () => {
         });
         setTodos(newArray);
     };
-
-    // useEffect(() => {
-    //     const newCompletedTodo = [];
-    //     const newActiveTodo = [];
-
-    //     todos.forEach((todo) => {
-    //         if (todo.completed) {
-    //             newCompletedTodo.push(todo);
-    //         } else {
-    //             newActiveTodo.push(todo);
-    //         }
-    //     });
-
-    //     setCompletedTodo(newCompletedTodo);
-    //     setActiveTodo(newActiveTodo);
-    // }, [todos]);
 
     const eliminarTodo = (id) => {
         const newArray = todos.filter((todo) => todo.id !== id);
@@ -71,11 +53,6 @@ const Main = () => {
                 error={error}
                 actualizarEstado={actualizarEstado}
                 eliminarTodo={eliminarTodo}
-                // activeTodo={activeTodo}
-                // completedTodo={completedTodo}
-                // showCompletedTodo={showCompletedTodo}
-                // showActiveTodo={showActiveTodo}
-                // showAllTodo={showAllTodo}
             />
             {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
@@ -92,6 +69,9 @@ const Main = () => {
                     setShowActiveTodo={setShowActiveTodo}
                     setShowCompletedTodo={setShowCompletedTodo}
                     setShowAllTodo={setShowAllTodo}
+                    showCompletedTodo={showCompletedTodo}
+                    showActiveTodo={showActiveTodo}
+                    showAllTodo={showAllTodo}
                 />
             )}
         </main>

@@ -4,6 +4,9 @@ const FilterTodo = ({
     setShowActiveTodo,
     setShowCompletedTodo,
     setShowAllTodo,
+    showAllTodo,
+    showActiveTodo,
+    showCompletedTodo,
 }) => {
     const handleClickAll = () => {
         setShowAllTodo(true);
