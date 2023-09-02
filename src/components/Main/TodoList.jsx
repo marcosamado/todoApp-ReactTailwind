@@ -44,12 +44,12 @@ function Todo({ todo, actualizarEstado, eliminarTodo }) {
     const completedStyle =
         "h-5 w-5 flex-none rounded-full bg-gradient-to-br from-cyan-300 to-fuchsia-500 px-1";
     const incompleteStyle =
-        "h-5 w-5 flex-none rounded-full border-2 border-slate-200 border-2 border-slate-200 dark:border-button-gray";
+        "h-5 w-5 flex-none rounded-full border-2 border-slate-200 border-2 border-slate-200 dark:border-button-gray ";
     const crossOutText = "grow pt-0.5 text-sm text-gray-400 line-through";
     const text = "grow pt-0.5 text-sm font-bold text-gray-600 dark:text-white";
 
     return (
-        <article className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5 dark:border-button-gray dark:bg-gray-todo">
+        <article className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5 transition-all duration-500 dark:border-button-gray dark:bg-gray-todo">
             <button
                 onClick={handleClick}
                 className={completed ? completedStyle : incompleteStyle}
