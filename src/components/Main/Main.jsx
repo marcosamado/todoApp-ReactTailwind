@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import ComputedTodo from "./ComputedTodo";
@@ -10,7 +10,7 @@ const Main = () => {
 
     const [showCompletedTodo, setShowCompletedTodo] = useState(false);
     const [showActiveTodo, setShowActiveTodo] = useState(false);
-    const [showAllTodo, setShowAllTodo] = useState(false);
+    const [showAllTodo, setShowAllTodo] = useState(true);
 
     const agregarTodo = (todo) => {
         setTodos([...todos, todo]);
