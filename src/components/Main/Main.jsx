@@ -62,9 +62,7 @@ const Main = () => {
 
     return (
         <main className="container mx-auto max-w-2xl px-6">
-            {/* Todo CreateTodo  - Formulario que crea la todo*/}
             <Form agregarTodo={agregarTodo} error={error} setError={setError} />
-            {/* Todo Item - Sector donde se apilan las todos - (va a contener Update todo y Delete todo) */}
 
             <TodoList
                 todos={getTodos()}
@@ -77,7 +75,6 @@ const Main = () => {
                 // showActiveTodo={showActiveTodo}
                 // showAllTodo={showAllTodo}
             />
-            {/* Todo computed - Opciones Eliminar todos Completados y calculo todos incompletas*/}
 
             {todos.length !== 0 && (
                 <ComputedTodo
@@ -86,7 +83,7 @@ const Main = () => {
                     clearComplete={clearComplete}
                 />
             )}
-            {/* Todo Filter - Muestra todas las todos, las activas y las completadas */}
+
             {todos.length !== 0 && (
                 <FilterTodo
                     setShowActiveTodo={setShowActiveTodo}
