@@ -2,14 +2,6 @@ import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
 const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
-    // let todosToRender = todos;
-
-    // if (showActiveTodo) {
-    //     todosToRender = activeTodo;
-    // } else if (showCompletedTodo) {
-    //     todosToRender = completedTodo;
-    // }
-
     return (
         <ul>
             {todos.length === 0 && !error ? (
