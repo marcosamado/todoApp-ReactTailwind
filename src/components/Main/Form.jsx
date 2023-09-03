@@ -29,11 +29,11 @@ const Form = ({ agregarTodo, error, setError }) => {
     };
 
     const formDarkTheme =
-        "mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md bg-white px-5 py-3.5 dark:border-button-gray dark:bg-gray-todo";
+        "mb-5 mt-8 flex items-center gap-2 overflow-hidden rounded-md bg-white px-5 py-3.5 dark:border-button-gray dark:bg-gray-todo transition-all duration-500";
     const inputDarkTheme =
-        "w-full text-gray-500 outline-none dark:bg-gray-todo dark:text-white";
+        "w-full text-gray-500 outline-none dark:bg-gray-todo dark:text-white transition-all duration-500";
     const spanDarkTheme =
-        "inline-block h-5 w-5 rounded-full border-2 border-slate-200 dark:border-button-gray";
+        "inline-block h-5 w-5 rounded-full border-2 border-slate-200 dark:border-button-gray transition-all duration-500";
     return (
         <>
             <form className={formDarkTheme} onSubmit={handleSubmit}>

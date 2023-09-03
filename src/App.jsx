@@ -7,10 +7,10 @@ const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
 
     const darkThemeApp =
-        "min-h-screen bg-gray-100 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat dark:bg-gray-rgba dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] dark:sm:bg-[url('./assets/images/bg-desktop-dark.jpg')]";
+        "min-h-screen bg-gray-100 bg-[url('./assets/images/bg-mobile-light.jpg')] transition-all duration-500 bg-contain bg-no-repeat dark:bg-gray-rgba dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] dark:sm:bg-[url('./assets/images/bg-desktop-dark.jpg')]";
 
     const lightThemeApp =
-        "min-h-screen bg-gray-100 bg-[url('./assets/images/bg-mobile-light.jpg')] bg-contain bg-no-repeat sm:bg-[url('./assets/images/bg-desktop-light.jpg')]";
+        "min-h-screen bg-gray-100 bg-[url('./assets/images/bg-mobile-light.jpg')] transition-all duration-500 bg-contain bg-no-repeat sm:bg-[url('./assets/images/bg-desktop-light.jpg')]";
 
     return (
         <>
