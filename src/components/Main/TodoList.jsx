@@ -1,24 +1,27 @@
 import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
-const TodoList = ({ todos, error, actualizarEstado, eliminarTodo }) => {
+import { Droppable, Draggable } from "@hello-pangea/dnd";
+
+const TodoList = ({ todos, actualizarEstado, eliminarTodo }) => {
     return (
-        <ul>
-            {todos.length === 0 && !error ? (
-                <h2 className=" mb-10 mt-5 text-center text-2xl font-semibold uppercase tracking-[0.4em] text-white">
-                    No hay todos
-                </h2>
-            ) : (
-                todos.map((todo, index) => (
-                    <Todo
-                        key={index}
-                        todo={todo}
-                        actualizarEstado={actualizarEstado}
-                        eliminarTodo={eliminarTodo}
-                    />
-                ))
+        <Droppable droppableId="todos">
+            {(droppableProvided) => (
+                <ul
+                    ref={droppableProvided.innerRef}
+                    {...droppableProvided.droppableProps}
+                >
+                    {todos.map((todo, index) => (
+                        <Todo
+                            key={index}
+                            todo={todo}
+                            actualizarEstado={actualizarEstado}
+                            eliminarTodo={eliminarTodo}
+                        />
+                    ))}
+                </ul>
             )}
-        </ul>
+        </Droppable>
     );
 };
 

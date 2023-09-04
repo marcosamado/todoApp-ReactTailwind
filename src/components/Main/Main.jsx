@@ -3,6 +3,7 @@ import Form from "./Form";
 import TodoList from "./TodoList";
 import ComputedTodo from "./ComputedTodo";
 import FilterTodo from "./FilterTodo";
+import { DragDropContext } from "@hello-pangea/dnd";
 
 const Main = () => {
     const [todos, setTodos] = useState([]);
@@ -46,31 +47,29 @@ const Main = () => {
         <main className="container mx-auto max-w-2xl px-6">
             <Form agregarTodo={agregarTodo} error={error} setError={setError} />
 
-            <TodoList
-                todos={getTodos()}
-                error={error}
+            <DragDropContext>
+                <TodoList
+                    todos={getTodos()}
+                    error={error}
+                    actualizarEstado={actualizarEstado}
+                    eliminarTodo={eliminarTodo}
+                />
+            </DragDropContext>
+
+            <ComputedTodo
+                todos={todos}
                 actualizarEstado={actualizarEstado}
-                eliminarTodo={eliminarTodo}
+                clearComplete={clearComplete}
             />
 
-            {todos.length !== 0 && (
-                <ComputedTodo
-                    todos={todos}
-                    actualizarEstado={actualizarEstado}
-                    clearComplete={clearComplete}
-                />
-            )}
-
-            {todos.length !== 0 && (
-                <FilterTodo
-                    setShowActiveTodo={setShowActiveTodo}
-                    setShowCompletedTodo={setShowCompletedTodo}
-                    setShowAllTodo={setShowAllTodo}
-                    showCompletedTodo={showCompletedTodo}
-                    showActiveTodo={showActiveTodo}
-                    showAllTodo={showAllTodo}
-                />
-            )}
+            <FilterTodo
+                setShowActiveTodo={setShowActiveTodo}
+                setShowCompletedTodo={setShowCompletedTodo}
+                setShowAllTodo={setShowAllTodo}
+                showCompletedTodo={showCompletedTodo}
+                showActiveTodo={showActiveTodo}
+                showAllTodo={showAllTodo}
+            />
         </main>
     );
 };
