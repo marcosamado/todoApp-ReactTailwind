@@ -8,24 +8,27 @@ const TodoList = ({ todos, actualizarEstado, eliminarTodo }) => {
         <Droppable droppableId="todos">
             {(droppableProvided) => (
                 <ul
+                    className=""
                     ref={droppableProvided.innerRef}
                     {...droppableProvided.droppableProps}
                 >
                     {todos.map((todo, index) => (
                         <Todo
-                            key={index}
+                            key={todo.id}
                             todo={todo}
                             actualizarEstado={actualizarEstado}
                             eliminarTodo={eliminarTodo}
+                            index={index}
                         />
                     ))}
+                    {droppableProvided.placeholder}
                 </ul>
             )}
         </Droppable>
     );
 };
 
-function Todo({ todo, actualizarEstado, eliminarTodo }) {
+function Todo({ todo, actualizarEstado, eliminarTodo, index }) {
     const { name, id, completed } = todo;
 
     const handleClick = () => {
@@ -44,18 +47,27 @@ function Todo({ todo, actualizarEstado, eliminarTodo }) {
     const text = "grow pt-0.5 text-sm font-bold text-gray-600 dark:text-white";
 
     return (
-        <article className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5 transition-all duration-500 dark:border-button-gray dark:bg-gray-todo">
-            <button
-                onClick={handleClick}
-                className={completed ? completedStyle : incompleteStyle}
-            >
-                {completed && <CheckIcon />}
-            </button>
-            <p className={completed ? crossOutText : text}>{name}</p>
-            <button onClick={handleClickDelete} className="flex-none">
-                {<CrossIcon />}
-            </button>
-        </article>
+        <Draggable draggableId={`${todo.id}`} index={index}>
+            {(draggableProdivded) => (
+                <article
+                    ref={draggableProdivded.innerRef}
+                    {...draggableProdivded.draggableProps}
+                    {...draggableProdivded.dragHandleProps}
+                    className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5  dark:border-button-gray dark:bg-gray-todo"
+                >
+                    <button
+                        onClick={handleClick}
+                        className={completed ? completedStyle : incompleteStyle}
+                    >
+                        {completed && <CheckIcon />}
+                    </button>
+                    <p className={completed ? crossOutText : text}>{name}</p>
+                    <button onClick={handleClickDelete} className="flex-none">
+                        {<CrossIcon />}
+                    </button>
+                </article>
+            )}
+        </Draggable>
     );
 }
 

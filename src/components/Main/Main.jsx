@@ -5,6 +5,14 @@ import ComputedTodo from "./ComputedTodo";
 import FilterTodo from "./FilterTodo";
 import { DragDropContext } from "@hello-pangea/dnd";
 
+const reorder = (list, startIndex, endIndex) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
 const Main = () => {
     const [todos, setTodos] = useState([]);
     const [error, setError] = useState(false);
@@ -43,11 +51,27 @@ const Main = () => {
         return todos;
     };
 
+    const handleDragEnd = (result) => {
+        const { source, destination } = result;
+        if (!destination) return;
+        if (
+            source.index === destination.index &&
+            source.droppableId === destination.droppableId
+        )
+            return;
+        // const originalArray = [...todos];
+        // const [itemToOrder] = originalArray.splice(source.index, 1);
+        // originalArray.splice(destination.index, 0, itemToOrder);
+        setTodos((prevTodos) =>
+            reorder(prevTodos, source.index, destination.index)
+        );
+    };
+
     return (
         <main className="container mx-auto max-w-2xl px-6">
             <Form agregarTodo={agregarTodo} error={error} setError={setError} />
 
-            <DragDropContext>
+            <DragDropContext onDragEnd={handleDragEnd}>
                 <TodoList
                     todos={getTodos()}
                     error={error}
