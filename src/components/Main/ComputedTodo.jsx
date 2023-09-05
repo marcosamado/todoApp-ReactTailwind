@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ComputedTodo = ({ clearComplete, actualizarEstado, todos }) => {
     const [count, setCount] = useState(0);

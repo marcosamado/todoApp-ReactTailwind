@@ -1,4 +1,3 @@
-import React from "react";
 import CrossIcon from "../icons/CrossIcon";
 import CheckIcon from "../icons/CheckIcon";
 import { Droppable, Draggable } from "@hello-pangea/dnd";
