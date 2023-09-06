@@ -15,7 +15,7 @@ export const Header = ({ setDarkTheme, darkTheme }) => {
                 </h1>
                 <button className="" onClick={handleClick}>
                     {darkTheme ? (
-                        <SunIcon color="white" />
+                        <SunIcon color="yellow" />
                     ) : (
                         <MoonIcon color="skyblue" />
                     )}
