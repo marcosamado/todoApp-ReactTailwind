@@ -52,7 +52,7 @@ function Todo({ todo, actualizarEstado, eliminarTodo, index }) {
                     ref={draggableProdivded.innerRef}
                     {...draggableProdivded.draggableProps}
                     {...draggableProdivded.dragHandleProps}
-                    className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5  dark:border-button-gray dark:bg-gray-todo"
+                    className="flex gap-2 rounded-md border border-slate-300 bg-white px-4 py-3.5 transition-all duration-500  dark:border-button-gray dark:bg-gray-todo"
                 >
                     <button
                         onClick={handleClick}

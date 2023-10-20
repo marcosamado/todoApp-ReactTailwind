@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
 import ComputedTodo from "./ComputedTodo";
@@ -13,8 +13,10 @@ const reorder = (list, startIndex, endIndex) => {
     return result;
 };
 
+const initialTodos = JSON.parse(localStorage.getItem("todos")) || [];
+
 const Main = () => {
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(initialTodos);
     const [error, setError] = useState(false);
 
     const [showCompletedTodo, setShowCompletedTodo] = useState(false);
@@ -63,6 +65,10 @@ const Main = () => {
             reorder(prevTodos, source.index, destination.index)
         );
     };
+
+    useEffect(() => {
+        localStorage.setItem("todos", JSON.stringify(todos));
+    }, [todos]);
 
     return (
         <main className="container mx-auto max-w-2xl px-6">
